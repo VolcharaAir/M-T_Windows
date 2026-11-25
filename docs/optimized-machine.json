@@ -1,0 +1,78 @@
+{
+  "format": "markov-turing-machine",
+  "version": 3,
+  "initial": "S_1",
+  "halts": [
+    "STOP"
+  ],
+  "blank": -1,
+  "left": -2,
+  "inputAlphabet": [
+    48,
+    49
+  ],
+  "wordAlphabet": [
+    48,
+    49
+  ],
+  "symbols": {
+    "-1": "λ",
+    "-2": "σ",
+    "48": "0",
+    "49": "1"
+  },
+  "states": [
+    {
+      "id": "S_1",
+      "internalId": 0,
+      "phase": "Начало",
+      "description": "Прочитать σ и перейти к первому символу",
+      "rule": null
+    },
+    {
+      "id": "S_2",
+      "internalId": 1,
+      "phase": "Замена символа",
+      "description": "Один проход: заменить все 1 на 0",
+      "rule": 1
+    },
+    {
+      "id": "STOP",
+      "internalId": 2,
+      "phase": "Завершение",
+      "description": "Все вхождения заменены",
+      "rule": null
+    }
+  ],
+  "transitions": [
+    {
+      "state": "S_1",
+      "read": -2,
+      "nextState": "S_2",
+      "write": -2,
+      "move": "R"
+    },
+    {
+      "state": "S_2",
+      "read": -1,
+      "nextState": "STOP",
+      "write": -1,
+      "move": "—"
+    },
+    {
+      "state": "S_2",
+      "read": 48,
+      "nextState": "S_2",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "S_2",
+      "read": 49,
+      "nextState": "S_2",
+      "write": 48,
+      "move": "R"
+    }
+  ],
+  "initialHead": 0
+}

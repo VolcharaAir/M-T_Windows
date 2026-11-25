@@ -1,0 +1,28 @@
+name: markov_turing_studio
+description: Offline compiler of normal Markov algorithms to single-tape Turing machines.
+publish_to: none
+version: 1.5.0+6
+environment:
+  sdk: '>=3.14.0 <4.0.0'
+  flutter: '>=3.50.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  path_provider: ^2.1.5
+  file_selector: ^1.0.3
+  material_ui: ^1.11.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: StudioSans
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+    - family: StudioMono
+      fonts:
+        - asset: assets/fonts/DejaVuSansMono.ttf

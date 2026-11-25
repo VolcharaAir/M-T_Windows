@@ -1,0 +1,1628 @@
+{
+  "format": "markov-turing-machine",
+  "version": 2,
+  "initial": "q2",
+  "halts": [
+    "q0",
+    "q1"
+  ],
+  "blank": -1,
+  "left": -2,
+  "inputAlphabet": [
+    48,
+    49
+  ],
+  "wordAlphabet": [
+    48,
+    49
+  ],
+  "symbols": {
+    "48": "0",
+    "49": "1",
+    "-1": "λ",
+    "-2": "σ",
+    "-8": "⟦σ⟧",
+    "-58": "⟦0⟧",
+    "-59": "⟦1⟧"
+  },
+  "states": [
+    {
+      "id": "q0",
+      "phase": "Завершение",
+      "description": "Нет применимых правил",
+      "rule": null
+    },
+    {
+      "id": "q1",
+      "phase": "Завершение",
+      "description": "Выполнена заключительная подстановка",
+      "rule": null
+    },
+    {
+      "id": "q2",
+      "phase": "Выбор правила",
+      "description": "Начало проверки правила 1",
+      "rule": 1
+    },
+    {
+      "id": "q3",
+      "phase": "Выбор правила",
+      "description": "Начало проверки правила 2",
+      "rule": 2
+    },
+    {
+      "id": "q4",
+      "phase": "Подстановка",
+      "description": "Отметить символ перед заменяемым вхождением",
+      "rule": 1
+    },
+    {
+      "id": "q5",
+      "phase": "Возврат",
+      "description": "Снять метку опорного символа",
+      "rule": 1
+    },
+    {
+      "id": "q6",
+      "phase": "Возврат",
+      "description": "Вернуться к маркеру начала σ",
+      "rule": 1
+    },
+    {
+      "id": "q7",
+      "phase": "Вставка",
+      "description": "Вставить 1 после опоры",
+      "rule": 1
+    },
+    {
+      "id": "q8",
+      "phase": "Сдвиг",
+      "description": "Вернуться к отмеченному символу",
+      "rule": 1
+    },
+    {
+      "id": "q9",
+      "phase": "Сдвиг",
+      "description": "Начало сдвига хвоста вправо",
+      "rule": 1
+    },
+    {
+      "id": "q10",
+      "phase": "Сдвиг вправо",
+      "description": "Перенести 0 вправо",
+      "rule": 1
+    },
+    {
+      "id": "q11",
+      "phase": "Сдвиг вправо",
+      "description": "Перенести 1 вправо",
+      "rule": 1
+    },
+    {
+      "id": "q12",
+      "phase": "Сдвиг вправо",
+      "description": "Завершить сдвиг на пустой ячейке",
+      "rule": 1
+    },
+    {
+      "id": "q13",
+      "phase": "Удаление",
+      "description": "Удалить символ после опоры",
+      "rule": 1
+    },
+    {
+      "id": "q14",
+      "phase": "Сдвиг",
+      "description": "Вернуться к отмеченному символу",
+      "rule": 1
+    },
+    {
+      "id": "q15",
+      "phase": "Сдвиг",
+      "description": "Начало сдвига хвоста влево",
+      "rule": 1
+    },
+    {
+      "id": "q16",
+      "phase": "Сдвиг влево",
+      "description": "Прочитать следующий символ хвоста",
+      "rule": 1
+    },
+    {
+      "id": "q17",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 0 на одну ячейку влево",
+      "rule": 1
+    },
+    {
+      "id": "q18",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 1
+    },
+    {
+      "id": "q19",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 1 на одну ячейку влево",
+      "rule": 1
+    },
+    {
+      "id": "q20",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 1
+    },
+    {
+      "id": "q21",
+      "phase": "Сдвиг влево",
+      "description": "Перенести λ на одну ячейку влево",
+      "rule": 1
+    },
+    {
+      "id": "q22",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 1
+    },
+    {
+      "id": "q23",
+      "phase": "Удаление",
+      "description": "Удалить символ после опоры",
+      "rule": 1
+    },
+    {
+      "id": "q24",
+      "phase": "Сдвиг",
+      "description": "Вернуться к отмеченному символу",
+      "rule": 1
+    },
+    {
+      "id": "q25",
+      "phase": "Сдвиг",
+      "description": "Начало сдвига хвоста влево",
+      "rule": 1
+    },
+    {
+      "id": "q26",
+      "phase": "Сдвиг влево",
+      "description": "Прочитать следующий символ хвоста",
+      "rule": 1
+    },
+    {
+      "id": "q27",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 0 на одну ячейку влево",
+      "rule": 1
+    },
+    {
+      "id": "q28",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 1
+    },
+    {
+      "id": "q29",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 1 на одну ячейку влево",
+      "rule": 1
+    },
+    {
+      "id": "q30",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 1
+    },
+    {
+      "id": "q31",
+      "phase": "Сдвиг влево",
+      "description": "Перенести λ на одну ячейку влево",
+      "rule": 1
+    },
+    {
+      "id": "q32",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 1
+    },
+    {
+      "id": "q33",
+      "phase": "Поиск",
+      "description": "Совпало 1 из 2 символов образца",
+      "rule": 1
+    },
+    {
+      "id": "q34",
+      "phase": "Совпадение",
+      "description": "Вернуться к опоре: осталось 2 ячеек",
+      "rule": 1
+    },
+    {
+      "id": "q35",
+      "phase": "Совпадение",
+      "description": "Вернуться к опоре: осталось 1 ячеек",
+      "rule": 1
+    },
+    {
+      "id": "q36",
+      "phase": "Выбор правила",
+      "description": "Образец не найден; вернуться к началу для следующего правила",
+      "rule": 1
+    },
+    {
+      "id": "q37",
+      "phase": "Подстановка",
+      "description": "Отметить символ перед заменяемым вхождением",
+      "rule": 2
+    },
+    {
+      "id": "q38",
+      "phase": "Возврат",
+      "description": "Снять метку опорного символа",
+      "rule": 2
+    },
+    {
+      "id": "q39",
+      "phase": "Возврат",
+      "description": "Вернуться к маркеру начала σ",
+      "rule": 2
+    },
+    {
+      "id": "q40",
+      "phase": "Вставка",
+      "description": "Вставить 0 после опоры",
+      "rule": 2
+    },
+    {
+      "id": "q41",
+      "phase": "Сдвиг",
+      "description": "Вернуться к отмеченному символу",
+      "rule": 2
+    },
+    {
+      "id": "q42",
+      "phase": "Сдвиг",
+      "description": "Начало сдвига хвоста вправо",
+      "rule": 2
+    },
+    {
+      "id": "q43",
+      "phase": "Сдвиг вправо",
+      "description": "Перенести 0 вправо",
+      "rule": 2
+    },
+    {
+      "id": "q44",
+      "phase": "Сдвиг вправо",
+      "description": "Перенести 1 вправо",
+      "rule": 2
+    },
+    {
+      "id": "q45",
+      "phase": "Сдвиг вправо",
+      "description": "Завершить сдвиг на пустой ячейке",
+      "rule": 2
+    },
+    {
+      "id": "q46",
+      "phase": "Удаление",
+      "description": "Удалить символ после опоры",
+      "rule": 2
+    },
+    {
+      "id": "q47",
+      "phase": "Сдвиг",
+      "description": "Вернуться к отмеченному символу",
+      "rule": 2
+    },
+    {
+      "id": "q48",
+      "phase": "Сдвиг",
+      "description": "Начало сдвига хвоста влево",
+      "rule": 2
+    },
+    {
+      "id": "q49",
+      "phase": "Сдвиг влево",
+      "description": "Прочитать следующий символ хвоста",
+      "rule": 2
+    },
+    {
+      "id": "q50",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 0 на одну ячейку влево",
+      "rule": 2
+    },
+    {
+      "id": "q51",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 2
+    },
+    {
+      "id": "q52",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 1 на одну ячейку влево",
+      "rule": 2
+    },
+    {
+      "id": "q53",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 2
+    },
+    {
+      "id": "q54",
+      "phase": "Сдвиг влево",
+      "description": "Перенести λ на одну ячейку влево",
+      "rule": 2
+    },
+    {
+      "id": "q55",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 2
+    },
+    {
+      "id": "q56",
+      "phase": "Удаление",
+      "description": "Удалить символ после опоры",
+      "rule": 2
+    },
+    {
+      "id": "q57",
+      "phase": "Сдвиг",
+      "description": "Вернуться к отмеченному символу",
+      "rule": 2
+    },
+    {
+      "id": "q58",
+      "phase": "Сдвиг",
+      "description": "Начало сдвига хвоста влево",
+      "rule": 2
+    },
+    {
+      "id": "q59",
+      "phase": "Сдвиг влево",
+      "description": "Прочитать следующий символ хвоста",
+      "rule": 2
+    },
+    {
+      "id": "q60",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 0 на одну ячейку влево",
+      "rule": 2
+    },
+    {
+      "id": "q61",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 2
+    },
+    {
+      "id": "q62",
+      "phase": "Сдвиг влево",
+      "description": "Перенести 1 на одну ячейку влево",
+      "rule": 2
+    },
+    {
+      "id": "q63",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 2
+    },
+    {
+      "id": "q64",
+      "phase": "Сдвиг влево",
+      "description": "Перенести λ на одну ячейку влево",
+      "rule": 2
+    },
+    {
+      "id": "q65",
+      "phase": "Сдвиг влево",
+      "description": "Пройти освобождённую ячейку",
+      "rule": 2
+    },
+    {
+      "id": "q66",
+      "phase": "Поиск",
+      "description": "Совпало 1 из 2 символов образца",
+      "rule": 2
+    },
+    {
+      "id": "q67",
+      "phase": "Совпадение",
+      "description": "Вернуться к опоре: осталось 2 ячеек",
+      "rule": 2
+    },
+    {
+      "id": "q68",
+      "phase": "Совпадение",
+      "description": "Вернуться к опоре: осталось 1 ячеек",
+      "rule": 2
+    },
+    {
+      "id": "q69",
+      "phase": "Выбор правила",
+      "description": "Образец не найден; вернуться к началу для следующего правила",
+      "rule": 2
+    }
+  ],
+  "transitions": [
+    {
+      "state": "q6",
+      "read": 48,
+      "nextState": "q6",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q6",
+      "read": 49,
+      "nextState": "q6",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q6",
+      "read": -2,
+      "nextState": "q2",
+      "write": -2,
+      "move": "R"
+    },
+    {
+      "state": "q5",
+      "read": -8,
+      "nextState": "q6",
+      "write": -2,
+      "move": "S"
+    },
+    {
+      "state": "q5",
+      "read": -58,
+      "nextState": "q6",
+      "write": 48,
+      "move": "S"
+    },
+    {
+      "state": "q5",
+      "read": -59,
+      "nextState": "q6",
+      "write": 49,
+      "move": "S"
+    },
+    {
+      "state": "q8",
+      "read": 48,
+      "nextState": "q8",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q8",
+      "read": 49,
+      "nextState": "q8",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q8",
+      "read": -2,
+      "nextState": "q8",
+      "write": -2,
+      "move": "L"
+    },
+    {
+      "state": "q8",
+      "read": -1,
+      "nextState": "q8",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q8",
+      "read": -8,
+      "nextState": "q5",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q8",
+      "read": -58,
+      "nextState": "q5",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q8",
+      "read": -59,
+      "nextState": "q5",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q7",
+      "read": -8,
+      "nextState": "q9",
+      "write": -8,
+      "move": "R"
+    },
+    {
+      "state": "q7",
+      "read": -58,
+      "nextState": "q9",
+      "write": -58,
+      "move": "R"
+    },
+    {
+      "state": "q7",
+      "read": -59,
+      "nextState": "q9",
+      "write": -59,
+      "move": "R"
+    },
+    {
+      "state": "q9",
+      "read": 48,
+      "nextState": "q10",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q9",
+      "read": 49,
+      "nextState": "q11",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q9",
+      "read": -1,
+      "nextState": "q12",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q10",
+      "read": 48,
+      "nextState": "q10",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q10",
+      "read": 49,
+      "nextState": "q11",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q10",
+      "read": -1,
+      "nextState": "q12",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q11",
+      "read": 48,
+      "nextState": "q10",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q11",
+      "read": 49,
+      "nextState": "q11",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q11",
+      "read": -1,
+      "nextState": "q12",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q12",
+      "read": -1,
+      "nextState": "q8",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q14",
+      "read": 48,
+      "nextState": "q14",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q14",
+      "read": 49,
+      "nextState": "q14",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q14",
+      "read": -2,
+      "nextState": "q14",
+      "write": -2,
+      "move": "L"
+    },
+    {
+      "state": "q14",
+      "read": -1,
+      "nextState": "q14",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q14",
+      "read": -8,
+      "nextState": "q7",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q14",
+      "read": -58,
+      "nextState": "q7",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q14",
+      "read": -59,
+      "nextState": "q7",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q13",
+      "read": -8,
+      "nextState": "q15",
+      "write": -8,
+      "move": "R"
+    },
+    {
+      "state": "q13",
+      "read": -58,
+      "nextState": "q15",
+      "write": -58,
+      "move": "R"
+    },
+    {
+      "state": "q13",
+      "read": -59,
+      "nextState": "q15",
+      "write": -59,
+      "move": "R"
+    },
+    {
+      "state": "q15",
+      "read": 48,
+      "nextState": "q16",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q15",
+      "read": 49,
+      "nextState": "q16",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q16",
+      "read": 48,
+      "nextState": "q17",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q17",
+      "read": -1,
+      "nextState": "q18",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q18",
+      "read": -1,
+      "nextState": "q16",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q16",
+      "read": 49,
+      "nextState": "q19",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q19",
+      "read": -1,
+      "nextState": "q20",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q20",
+      "read": -1,
+      "nextState": "q16",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q16",
+      "read": -1,
+      "nextState": "q21",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q21",
+      "read": -1,
+      "nextState": "q22",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q22",
+      "read": -1,
+      "nextState": "q14",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q24",
+      "read": 48,
+      "nextState": "q24",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q24",
+      "read": 49,
+      "nextState": "q24",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q24",
+      "read": -2,
+      "nextState": "q24",
+      "write": -2,
+      "move": "L"
+    },
+    {
+      "state": "q24",
+      "read": -1,
+      "nextState": "q24",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q24",
+      "read": -8,
+      "nextState": "q13",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q24",
+      "read": -58,
+      "nextState": "q13",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q24",
+      "read": -59,
+      "nextState": "q13",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q23",
+      "read": -8,
+      "nextState": "q25",
+      "write": -8,
+      "move": "R"
+    },
+    {
+      "state": "q23",
+      "read": -58,
+      "nextState": "q25",
+      "write": -58,
+      "move": "R"
+    },
+    {
+      "state": "q23",
+      "read": -59,
+      "nextState": "q25",
+      "write": -59,
+      "move": "R"
+    },
+    {
+      "state": "q25",
+      "read": 48,
+      "nextState": "q26",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q25",
+      "read": 49,
+      "nextState": "q26",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q26",
+      "read": 48,
+      "nextState": "q27",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q27",
+      "read": -1,
+      "nextState": "q28",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q28",
+      "read": -1,
+      "nextState": "q26",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q26",
+      "read": 49,
+      "nextState": "q29",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q29",
+      "read": -1,
+      "nextState": "q30",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q30",
+      "read": -1,
+      "nextState": "q26",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q26",
+      "read": -1,
+      "nextState": "q31",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q31",
+      "read": -1,
+      "nextState": "q32",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q32",
+      "read": -1,
+      "nextState": "q24",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q4",
+      "read": -2,
+      "nextState": "q23",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q4",
+      "read": 48,
+      "nextState": "q23",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q4",
+      "read": 49,
+      "nextState": "q23",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q34",
+      "read": 48,
+      "nextState": "q35",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q34",
+      "read": 49,
+      "nextState": "q35",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q35",
+      "read": 48,
+      "nextState": "q4",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q35",
+      "read": 49,
+      "nextState": "q4",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q36",
+      "read": 48,
+      "nextState": "q36",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q36",
+      "read": 49,
+      "nextState": "q36",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q36",
+      "read": -2,
+      "nextState": "q3",
+      "write": -2,
+      "move": "R"
+    },
+    {
+      "state": "q2",
+      "read": -1,
+      "nextState": "q36",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q2",
+      "read": 48,
+      "nextState": "q33",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q2",
+      "read": 49,
+      "nextState": "q2",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q33",
+      "read": -1,
+      "nextState": "q36",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q33",
+      "read": 48,
+      "nextState": "q34",
+      "write": 48,
+      "move": "S"
+    },
+    {
+      "state": "q33",
+      "read": 49,
+      "nextState": "q2",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q39",
+      "read": 48,
+      "nextState": "q39",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q39",
+      "read": 49,
+      "nextState": "q39",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q39",
+      "read": -2,
+      "nextState": "q1",
+      "write": -2,
+      "move": "R"
+    },
+    {
+      "state": "q38",
+      "read": -8,
+      "nextState": "q39",
+      "write": -2,
+      "move": "S"
+    },
+    {
+      "state": "q38",
+      "read": -58,
+      "nextState": "q39",
+      "write": 48,
+      "move": "S"
+    },
+    {
+      "state": "q38",
+      "read": -59,
+      "nextState": "q39",
+      "write": 49,
+      "move": "S"
+    },
+    {
+      "state": "q41",
+      "read": 48,
+      "nextState": "q41",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q41",
+      "read": 49,
+      "nextState": "q41",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q41",
+      "read": -2,
+      "nextState": "q41",
+      "write": -2,
+      "move": "L"
+    },
+    {
+      "state": "q41",
+      "read": -1,
+      "nextState": "q41",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q41",
+      "read": -8,
+      "nextState": "q38",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q41",
+      "read": -58,
+      "nextState": "q38",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q41",
+      "read": -59,
+      "nextState": "q38",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q40",
+      "read": -8,
+      "nextState": "q42",
+      "write": -8,
+      "move": "R"
+    },
+    {
+      "state": "q40",
+      "read": -58,
+      "nextState": "q42",
+      "write": -58,
+      "move": "R"
+    },
+    {
+      "state": "q40",
+      "read": -59,
+      "nextState": "q42",
+      "write": -59,
+      "move": "R"
+    },
+    {
+      "state": "q42",
+      "read": 48,
+      "nextState": "q43",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q42",
+      "read": 49,
+      "nextState": "q44",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q42",
+      "read": -1,
+      "nextState": "q45",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q43",
+      "read": 48,
+      "nextState": "q43",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q43",
+      "read": 49,
+      "nextState": "q44",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q43",
+      "read": -1,
+      "nextState": "q45",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q44",
+      "read": 48,
+      "nextState": "q43",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q44",
+      "read": 49,
+      "nextState": "q44",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q44",
+      "read": -1,
+      "nextState": "q45",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q45",
+      "read": -1,
+      "nextState": "q41",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q47",
+      "read": 48,
+      "nextState": "q47",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q47",
+      "read": 49,
+      "nextState": "q47",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q47",
+      "read": -2,
+      "nextState": "q47",
+      "write": -2,
+      "move": "L"
+    },
+    {
+      "state": "q47",
+      "read": -1,
+      "nextState": "q47",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q47",
+      "read": -8,
+      "nextState": "q40",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q47",
+      "read": -58,
+      "nextState": "q40",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q47",
+      "read": -59,
+      "nextState": "q40",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q46",
+      "read": -8,
+      "nextState": "q48",
+      "write": -8,
+      "move": "R"
+    },
+    {
+      "state": "q46",
+      "read": -58,
+      "nextState": "q48",
+      "write": -58,
+      "move": "R"
+    },
+    {
+      "state": "q46",
+      "read": -59,
+      "nextState": "q48",
+      "write": -59,
+      "move": "R"
+    },
+    {
+      "state": "q48",
+      "read": 48,
+      "nextState": "q49",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q48",
+      "read": 49,
+      "nextState": "q49",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q49",
+      "read": 48,
+      "nextState": "q50",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q50",
+      "read": -1,
+      "nextState": "q51",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q51",
+      "read": -1,
+      "nextState": "q49",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q49",
+      "read": 49,
+      "nextState": "q52",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q52",
+      "read": -1,
+      "nextState": "q53",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q53",
+      "read": -1,
+      "nextState": "q49",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q49",
+      "read": -1,
+      "nextState": "q54",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q54",
+      "read": -1,
+      "nextState": "q55",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q55",
+      "read": -1,
+      "nextState": "q47",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q57",
+      "read": 48,
+      "nextState": "q57",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q57",
+      "read": 49,
+      "nextState": "q57",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q57",
+      "read": -2,
+      "nextState": "q57",
+      "write": -2,
+      "move": "L"
+    },
+    {
+      "state": "q57",
+      "read": -1,
+      "nextState": "q57",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q57",
+      "read": -8,
+      "nextState": "q46",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q57",
+      "read": -58,
+      "nextState": "q46",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q57",
+      "read": -59,
+      "nextState": "q46",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q56",
+      "read": -8,
+      "nextState": "q58",
+      "write": -8,
+      "move": "R"
+    },
+    {
+      "state": "q56",
+      "read": -58,
+      "nextState": "q58",
+      "write": -58,
+      "move": "R"
+    },
+    {
+      "state": "q56",
+      "read": -59,
+      "nextState": "q58",
+      "write": -59,
+      "move": "R"
+    },
+    {
+      "state": "q58",
+      "read": 48,
+      "nextState": "q59",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q58",
+      "read": 49,
+      "nextState": "q59",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q59",
+      "read": 48,
+      "nextState": "q60",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q60",
+      "read": -1,
+      "nextState": "q61",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q61",
+      "read": -1,
+      "nextState": "q59",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q59",
+      "read": 49,
+      "nextState": "q62",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q62",
+      "read": -1,
+      "nextState": "q63",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q63",
+      "read": -1,
+      "nextState": "q59",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q59",
+      "read": -1,
+      "nextState": "q64",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q64",
+      "read": -1,
+      "nextState": "q65",
+      "write": -1,
+      "move": "R"
+    },
+    {
+      "state": "q65",
+      "read": -1,
+      "nextState": "q57",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q37",
+      "read": -2,
+      "nextState": "q56",
+      "write": -8,
+      "move": "S"
+    },
+    {
+      "state": "q37",
+      "read": 48,
+      "nextState": "q56",
+      "write": -58,
+      "move": "S"
+    },
+    {
+      "state": "q37",
+      "read": 49,
+      "nextState": "q56",
+      "write": -59,
+      "move": "S"
+    },
+    {
+      "state": "q67",
+      "read": 48,
+      "nextState": "q68",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q67",
+      "read": 49,
+      "nextState": "q68",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q68",
+      "read": 48,
+      "nextState": "q37",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q68",
+      "read": 49,
+      "nextState": "q37",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q69",
+      "read": 48,
+      "nextState": "q69",
+      "write": 48,
+      "move": "L"
+    },
+    {
+      "state": "q69",
+      "read": 49,
+      "nextState": "q69",
+      "write": 49,
+      "move": "L"
+    },
+    {
+      "state": "q69",
+      "read": -2,
+      "nextState": "q0",
+      "write": -2,
+      "move": "R"
+    },
+    {
+      "state": "q3",
+      "read": -1,
+      "nextState": "q69",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q3",
+      "read": 48,
+      "nextState": "q3",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q3",
+      "read": 49,
+      "nextState": "q66",
+      "write": 49,
+      "move": "R"
+    },
+    {
+      "state": "q66",
+      "read": -1,
+      "nextState": "q69",
+      "write": -1,
+      "move": "L"
+    },
+    {
+      "state": "q66",
+      "read": 48,
+      "nextState": "q3",
+      "write": 48,
+      "move": "R"
+    },
+    {
+      "state": "q66",
+      "read": 49,
+      "nextState": "q67",
+      "write": 49,
+      "move": "S"
+    }
+  ]
+}
