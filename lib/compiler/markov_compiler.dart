@@ -65,97 +65,145 @@ class MarkovToTuringCompiler {
     for (var index = 0; index < program.rules.length; index++) {
       final rule = program.rules[index];
       int state(String phase, String text) => b.state(phase, text, rule.id);
-      final mark = state(
-        'Подстановка',
-        'Отметить символ перед заменяемым вхождением',
-      );
-      final restore = state('Возврат', 'Снять метку опорного символа');
       final rewind = state('Возврат', 'Вернуться к маркеру начала σ');
       for (final s in a) {
         b.add(rewind, s, rewind, s, L);
       }
       b.add(rewind, l, rule.terminal ? terminal : first, l, R);
-      for (final anchor in anchors) {
-        b.add(restore, anchor, rewind, TapeSymbol.unanchor(anchor), S);
-      }
+      // For an equal-length match the search head is already on the last
+      // symbol. Rewrite it immediately, then write the remaining cells leftward.
+      final overwrite =
+          rule.left.isNotEmpty && rule.left.length == rule.right.length;
+      var afterMatch = rewind;
+      if (overwrite) {
+        for (var k = 0; k < rule.left.length - 1; k++) {
+          final write = state('Подстановка', 'Перезаписать ячейку ${k + 1}');
+          b.add(write, rule.left[k], afterMatch, rule.right[k], L);
+          afterMatch = write;
+        }
+      } else {
+        final mark = state(
+          'Подстановка',
+          'Начать перезапись и отметить опору перед сдвигом',
+        );
+        final restore = state('Возврат', 'Снять метку опорного символа');
+        for (final anchor in anchors) {
+          b.add(restore, anchor, rewind, TapeSymbol.unanchor(anchor), S);
+        }
 
-      // Each operation starts on the marked predecessor and ends there.
-      // Delete m symbols at the same offset, then prepend RHS in reverse order.
-      var continuation = restore;
-      final operations = <(bool, int)>[
-        for (var n = 0; n < rule.left.length; n++) (true, 0),
-        for (final s in rule.right.reversed) (false, s),
-      ];
-      for (final operation in operations.reversed) {
-        final start = state(
-          operation.$1 ? 'Удаление' : 'Вставка',
-          operation.$1
-              ? 'Удалить символ после опоры'
-              : 'Вставить ${TapeSymbol.label(operation.$2)} после опоры',
-        );
-        final home = state('Сдвиг', 'Вернуться к отмеченному символу');
-        for (final s in {...a, l, blank}) {
-          b.add(home, s, home, s, L);
-        }
-        for (final anchor in anchors) {
-          b.add(home, anchor, continuation, anchor, S);
-        }
-        final work = state(
-          'Сдвиг',
-          operation.$1
-              ? 'Начало сдвига хвоста влево'
-              : 'Начало сдвига хвоста вправо',
-        );
-        for (final anchor in anchors) {
-          b.add(start, anchor, work, anchor, R);
-        }
-        if (operation.$1) {
-          // A blank hole moves right: carry source symbol in finite control,
-          // write it one cell left. The first blank ends the shift; no right marker.
-          final read = state(
-            'Сдвиг влево',
-            'Прочитать следующий символ хвоста',
+        // Each operation starts on the marked predecessor and ends there.
+        // Overwrite the shared prefix, then shift only for the length difference.
+        final sharedLength = rule.left.length < rule.right.length
+            ? rule.left.length
+            : rule.right.length;
+        var continuation = restore;
+        final operations = <(bool, int)>[
+          for (var n = sharedLength; n < rule.left.length; n++) (true, 0),
+          for (final s in rule.right.skip(sharedLength).toList().reversed)
+            (false, s),
+        ];
+        for (final operation in operations.reversed) {
+          final start = state(
+            operation.$1 ? 'Удаление' : 'Вставка',
+            operation.$1
+                ? 'Удалить символ после опоры'
+                : 'Вставить ${TapeSymbol.label(operation.$2)} после опоры',
           );
-          for (final s in a) {
-            b.add(work, s, read, blank, R);
+          final home = state('Сдвиг', 'Вернуться к отмеченному символу');
+          for (final s in {...a, l, blank}) {
+            b.add(home, s, home, s, L);
           }
-          for (final s in [...a, r]) {
-            final write = state(
+          for (final anchor in anchors) {
+            b.add(home, anchor, continuation, anchor, S);
+          }
+          final work = state(
+            'Сдвиг',
+            operation.$1
+                ? 'Начало сдвига хвоста влево'
+                : 'Начало сдвига хвоста вправо',
+          );
+          for (final anchor in anchors) {
+            b.add(start, anchor, work, anchor, R);
+          }
+          if (operation.$1) {
+            // A blank hole moves right: carry source symbol in finite control,
+            // write it one cell left. The first blank ends the shift; no right marker.
+            final read = state(
               'Сдвиг влево',
-              'Перенести ${TapeSymbol.label(s)} на одну ячейку влево',
+              'Прочитать следующий символ хвоста',
             );
-            final advance = state('Сдвиг влево', 'Пройти освобождённую ячейку');
-            b.add(read, s, write, blank, L);
-            b.add(write, blank, advance, s, R);
-            b.add(advance, blank, s == r ? home : read, blank, s == r ? L : R);
+            for (final s in a) {
+              b.add(work, s, read, blank, R);
+            }
+            for (final s in [...a, r]) {
+              final write = state(
+                'Сдвиг влево',
+                'Перенести ${TapeSymbol.label(s)} на одну ячейку влево',
+              );
+              final advance = state(
+                'Сдвиг влево',
+                'Пройти освобождённую ячейку',
+              );
+              b.add(read, s, write, blank, L);
+              b.add(write, blank, advance, s, R);
+              b.add(
+                advance,
+                blank,
+                s == r ? home : read,
+                blank,
+                s == r ? L : R,
+              );
+            }
+          } else {
+            // Carry one symbol in the state; the first blank receives the final carry.
+            final carries = {
+              for (final s in a)
+                s: state(
+                  'Сдвиг вправо',
+                  'Перенести ${TapeSymbol.label(s)} вправо',
+                ),
+            };
+            final end = state(
+              'Сдвиг вправо',
+              'Завершить сдвиг на пустой ячейке',
+            );
+            void fill(int q, int carried) {
+              for (final s in a) {
+                b.add(q, s, carries[s]!, carried, R);
+              }
+              b.add(q, r, end, carried, R);
+            }
+
+            fill(work, operation.$2);
+            for (final entry in carries.entries) {
+              fill(entry.value, entry.key);
+            }
+            b.add(end, blank, home, r, L);
+          }
+          continuation = start;
+        }
+        if (sharedLength == 0) {
+          for (final s in [l, ...a]) {
+            b.add(mark, s, continuation, TapeSymbol.anchor(s), S);
           }
         } else {
-          // Carry one symbol in the state; the first blank receives the final carry.
-          final carries = {
-            for (final s in a)
-              s: state(
-                'Сдвиг вправо',
-                'Перенести ${TapeSymbol.label(s)} вправо',
-              ),
-          };
-          final end = state('Сдвиг вправо', 'Завершить сдвиг на пустой ячейке');
-          void fill(int q, int carried) {
-            for (final s in a) {
-              b.add(q, s, carries[s]!, carried, R);
-            }
-            b.add(q, r, end, carried, R);
+          for (var k = sharedLength - 1; k >= 0; k--) {
+            final write = state('Подстановка', 'Перезаписать ячейку ${k + 1}');
+            final isAnchor = k == sharedLength - 1;
+            b.add(
+              write,
+              rule.left[k],
+              continuation,
+              isAnchor ? TapeSymbol.anchor(rule.right[k]) : rule.right[k],
+              isAnchor ? S : R,
+            );
+            continuation = write;
           }
-
-          fill(work, operation.$2);
-          for (final entry in carries.entries) {
-            fill(entry.value, entry.key);
+          for (final s in [l, ...a]) {
+            b.add(mark, s, continuation, s, R);
           }
-          b.add(end, blank, home, r, L);
         }
-        continuation = start;
-      }
-      for (final s in [l, ...a]) {
-        b.add(mark, s, continuation, TapeSymbol.anchor(s), S);
+        afterMatch = mark;
       }
 
       // KMP prefix automaton is expanded at COMPILE TIME. At runtime each
@@ -163,7 +211,7 @@ class MarkovToTuringCompiler {
       // encountered has the leftmost starting position (fixed pattern length).
       if (rule.left.isEmpty) {
         for (final s in [...a, r]) {
-          b.add(entries[index], s, mark, s, L);
+          b.add(entries[index], s, afterMatch, s, L);
         }
       } else {
         final m = rule.left.length;
@@ -173,15 +221,15 @@ class MarkovToTuringCompiler {
             state('Поиск', 'Совпало $k из $m символов образца'),
         ];
         final rewindMatch = [
-          for (var k = 0; k < m; k++)
+          for (var k = 0; !overwrite && k < m; k++)
             state('Совпадение', 'Вернуться к опоре: осталось ${m - k} ячеек'),
         ];
-        for (var k = 0; k < m; k++) {
+        for (var k = 0; k < rewindMatch.length; k++) {
           for (final s in a) {
             b.add(
               rewindMatch[k],
               s,
-              k + 1 == m ? mark : rewindMatch[k + 1],
+              k + 1 == m ? afterMatch : rewindMatch[k + 1],
               s,
               L,
             );
@@ -213,13 +261,13 @@ class MarkovToTuringCompiler {
               matched = prefix[matched - 1];
             }
             if (rule.left[matched] == s) matched++;
-            b.add(
-              search[k],
-              s,
-              matched == m ? rewindMatch[0] : search[matched],
-              s,
-              matched == m ? S : R,
-            );
+            if (matched < m) {
+              b.add(search[k], s, search[matched], s, R);
+            } else if (overwrite) {
+              b.add(search[k], s, afterMatch, rule.right.last, L);
+            } else {
+              b.add(search[k], s, rewindMatch.first, s, S);
+            }
           }
         }
       }

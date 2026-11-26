@@ -88,6 +88,16 @@ void main() {
       expect(r.turingStatus, ExecutionStatus.limited);
     }
   });
+  test('rewrite in place and shift only for the length difference', () {
+    final p = parser.parse('01 -> 10\n11 ->. 0', '01');
+    final m = compiler.compile(p);
+    expect(m.states.length, lessThanOrEqualTo(26));
+    expect(m.transitions.length, lessThanOrEqualTo(57));
+    expect(verifier.verify(p, m, '0101').turingWord, '000');
+    for (final word in verifier.words(p.inputAlphabet, 7)) {
+      expect(verifier.verify(p, m, word).verdict, Verdict.match, reason: word);
+    }
+  });
   test('lambda deletion syntax and complex universal example', () {
     final p = parser.parse('ab -> ba\naa -> b\nb -> λ', 'ab');
     expect(p.rules.last.right, isEmpty);
